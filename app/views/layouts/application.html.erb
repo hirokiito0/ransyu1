@@ -10,6 +10,51 @@
   </head>
 
   <body>
+    <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class = "container">
+        <%= link_to "bookers", root_path, class: "navbar-brand" %>
+        <button class = "navbar-toggler" type          = "button"
+                                         data-toggle   = "collapse"
+                                         data-target   = "#navbarNavDropdown"
+                                         aria-controls = "navbarNavDropdown"
+                                         aria-expanded = "false"
+                                         aria-label    = "Toggle navigation" >
+          <span class = "navbar-toggler-icon"></span>
+        </button>
+        <div class = "collapsr navbar-collapse" id = "navbarNavDropdown">
+          <ul class = "navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li>
+                <%#= link_to "Home", User_path(current_user), class: 'fas fa-home nav-link text-light' %>
+              </li>
+              <li>
+                <%#= link_to "Users", Users_path, class: 'fas fa-home nav-link text-light' %>
+              </li>
+              <li>
+                <%#= link_to "Books", books_path, class: 'fas fa-home nav-link text-light'%>
+              </li>
+              <li>
+                <%= link_to "logout", destroy_user_session_path,medhod: :delete, class: 'fas fa-home nav-link text-light' %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Home", root_path, class: 'fas fa-home nav-link text-light' %>
+              </li>
+              <li>
+                <%= link_to "About", home_about_path, class: 'fas fa-home nav-link text-light' %>
+              </li>
+              <li>
+                <%= link_to "sign_up", new_user_registration_path, class: 'fas fa-home nav-link text-light' %>
+              </li>
+              <li>
+                <%= link_to "log_in", new_user_session_path, class: 'fas fa-home nav-link text-light' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
